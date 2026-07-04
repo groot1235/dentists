@@ -1,26 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-primary: #1C1917;
+  --color-secondary: #44403C;
+  --color-accent: #A16207;
+  --color-bg-light: #FAFAF9;
+  --color-border-light: #D6D3D1;
+  --font-serif: "Bodoni Moda", serif;
+  --font-sans: "Jost", sans-serif;
+  
+  --shadow-premium-sm: 0 1px 2px rgba(28, 25, 23, 0.05);
+  --shadow-premium-md: 0 4px 12px rgba(28, 25, 23, 0.08);
+  --shadow-premium-lg: 0 12px 30px rgba(28, 25, 23, 0.12);
+  --shadow-premium-xl: 0 20px 48px rgba(28, 25, 23, 0.16);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  --background: #FAFAF9;
+  --foreground: #0C0A09;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0C0A09;
+    --foreground: #FAFAF9;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Glassmorphism custom utilities */
+.glass-premium {
+  background: rgba(250, 250, 249, 0.7);
+  backdrop-filter: blur(12px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: var(--shadow-premium-md);
+}
+
+.dark .glass-premium {
+  background: rgba(12, 10, 9, 0.7);
+  backdrop-filter: blur(12px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-navbar {
+  background: rgba(250, 250, 249, 0.75);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(28, 25, 23, 0.08);
+}
+
+.dark .glass-navbar {
+  background: rgba(12, 10, 9, 0.75);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Custom Scrollbar for Luxury Aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: #D6D3D1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A16207;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #44403C;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #A16207;
+}
+
+/* Before/After slider control */
+.slider-handle {
+  width: 40px;
+  height: 40px;
+  background: #FAFAF9;
+  border: 2px solid #A16207;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-premium-md);
+  cursor: ew-resize;
+  z-index: 10;
+}
+.dark .slider-handle {
+  background: #0C0A09;
 }
